@@ -46,4 +46,17 @@ router.get('/:id',(req,res)=>{
     });
 });
 
+// Get all posts with optional search
+router.get('/:id',(req,res)=>{
+    const {term} = req.query;
+    const query = term 
+    ? 'SELECT * FROM posts WHERE title LIKE ? OR content LIKE ? OR category LIKE ?'
+    : 'SELECT * FROM posts';
+    const params = term ? [`%${term}%`,`%${term}%`,`%${term}%`] : [];
+    db.query(query,params,(err,results)=>{
+        if(err) return res.status(400).json({error:err.message});
+        res.status(200).json(results);
+    });
+});
+
 module.exports = router;
