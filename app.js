@@ -3,14 +3,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const {db} = require('./config/db');
+const postRoutes = require('./routes/posts');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(bodyParser.json());
 
 // Routes
+app.use('/posts',postRoutes);
 
 // Test DB Connection
 db.connect((err)=>{
