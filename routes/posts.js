@@ -24,4 +24,15 @@ router.put('/:id',(req,res)=>{
     });
 });
 
+// Delete a post
+router.delete('/:id',(req,res)=>{
+    const {id} = req.params;
+    const query = 'DELETE FROM posts WHERE id = ?';
+    db.query(query,[id],(err,result)=>{
+        if(err) return res.status(400).json({error:err.message});
+        if(result.affectedRows===0) return res.status(404).json({error:'Post not found'});
+        res.status(204).send();
+    });
+});
+
 module.exports = router;
