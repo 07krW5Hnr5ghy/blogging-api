@@ -47,7 +47,7 @@ router.get('/:id',(req,res)=>{
 });
 
 // Get all posts with optional search
-router.get('/:id',(req,res)=>{
+router.get('/',(req,res)=>{
     const {term} = req.query;
     const query = term 
     ? 'SELECT * FROM posts WHERE title LIKE ? OR content LIKE ? OR category LIKE ?'
