@@ -35,4 +35,15 @@ router.delete('/:id',(req,res)=>{
     });
 });
 
+// Get a single post
+router.get('/:id',(req,res)=>{
+    const {id} = req.params;
+    const query = 'SELECT * FROM posts WHERE id = ?';
+    db.query(query,[id],(err,results)=>{
+        if(err) return res.status(400).json({error:err.message});
+        if(results.length===0) return res.status(404).json({error:'Post not found'});
+        res.status(200).json(results[0]);
+    });
+});
+
 module.exports = router;
