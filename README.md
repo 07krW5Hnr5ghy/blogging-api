@@ -30,8 +30,8 @@ This project is a simple RESTful API for a personal blogging platform. It allows
 1. **Clone the repository:**
 
    ```bash
-   git clone <repository-url>
-   cd <repository-directory>
+   git clone https://github.com/07krW5Hnr5ghy/blogging-api
+   cd blogging-api
    ```
 
 2. **Install dependencies:**
